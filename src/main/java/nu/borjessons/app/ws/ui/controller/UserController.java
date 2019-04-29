@@ -2,6 +2,7 @@ package nu.borjessons.app.ws.ui.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import nu.borjessons.app.ws.service.UserService;
 import nu.borjessons.app.ws.shared.dto.UserDto;
 import nu.borjessons.app.ws.ui.model.request.UserDetailsRequestModel;
+import nu.borjessons.app.ws.ui.model.response.OperationStatusModel;
+import nu.borjessons.app.ws.ui.model.response.RequestOperationStatus;
 import nu.borjessons.app.ws.ui.model.response.UserRest;
 
 @CrossOrigin
@@ -49,5 +53,28 @@ public class UserController {
 	public String deleteUser() {
 		return "Delete user was called";
 	}
+	
+	 /*
+     * http://localhost:8080/mobile-app-ws/users/email-verification?token=sdfsdf
+     * */
+    @GetMapping(path = "/email-verification", produces = { MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE })
+    public OperationStatusModel verifyEmailToken(@RequestParam(value = "token") String token) {
+
+        OperationStatusModel returnValue = new OperationStatusModel();
+        returnValue.setOperationName(RequestOperationName.VERIFY_EMAIL.name());
+        
+        boolean isVerified = userService.verifyEmailToken(token);
+        
+        if(isVerified)
+        {
+            returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
+        } else {
+            returnValue.setOperationResult(RequestOperationStatus.ERROR.name());
+        }
+
+        return returnValue;
+    }
+	
 
 }
