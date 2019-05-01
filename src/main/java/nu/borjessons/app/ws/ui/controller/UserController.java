@@ -1,5 +1,6 @@
 package nu.borjessons.app.ws.ui.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,9 +36,9 @@ public class UserController {
 	
 	@PostMapping
 	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
-		UserRest returnValue = new UserRest();
-		UserDto userDto = new UserDto();
-		BeanUtils.copyProperties(userDetails, userDto);
+		UserRest returnValue = new UserRest();		
+		ModelMapper modelMapper = new ModelMapper();
+		UserDto userDto = modelMapper.map(userDetails, UserDto.class);
 		UserDto createdUser = userService.createUser(userDto);
 		BeanUtils.copyProperties(createdUser, returnValue);
 		return returnValue;
