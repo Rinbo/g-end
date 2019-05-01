@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import nu.borjessons.app.ws.io.repositories.UserRepository;
 import nu.borjessons.app.ws.service.UserService;
 import nu.borjessons.app.ws.shared.dto.UserDto;
 import nu.borjessons.app.ws.ui.model.request.UserDetailsRequestModel;
@@ -29,6 +30,9 @@ public class UserController {
 	@Autowired
 	UserService userService;	
 	
+	@Autowired
+	UserRepository userRepository;
+	
 	@GetMapping
 	public String getUser() {
 		return "Get user was called";
@@ -36,6 +40,7 @@ public class UserController {
 	
 	@PostMapping
 	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
+				
 		UserRest returnValue = new UserRest();		
 		ModelMapper modelMapper = new ModelMapper();
 		UserDto userDto = modelMapper.map(userDetails, UserDto.class);
