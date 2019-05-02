@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nu.borjessons.app.ws.io.repositories.UserRepository;
 import nu.borjessons.app.ws.service.UserService;
-import nu.borjessons.app.ws.shared.dto.UserDto;
+import nu.borjessons.app.ws.shared.UserDto;
 import nu.borjessons.app.ws.ui.model.request.UserDetailsRequestModel;
 import nu.borjessons.app.ws.ui.model.response.OperationStatusModel;
 import nu.borjessons.app.ws.ui.model.response.RequestOperationStatus;

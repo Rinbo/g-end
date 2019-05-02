@@ -14,8 +14,9 @@ import org.springframework.stereotype.Service;
 import nu.borjessons.app.ws.io.entity.UserEntity;
 import nu.borjessons.app.ws.io.repositories.UserRepository;
 import nu.borjessons.app.ws.service.UserService;
-import nu.borjessons.app.ws.shared.dto.UserDto;
-import nu.borjessons.app.ws.shared.dto.Utils;
+import nu.borjessons.app.ws.shared.AmazonSES;
+import nu.borjessons.app.ws.shared.UserDto;
+import nu.borjessons.app.ws.shared.Utils;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -47,6 +48,8 @@ public class UserServiceImpl implements UserService {
 		UserEntity storedUserDetails = userRepository.save(userEntity);
 				
 		UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);
+		
+		new AmazonSES().verifyEmail(returnValue);
 		
 		return returnValue;
 	}

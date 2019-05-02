@@ -22,7 +22,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import nu.borjessons.app.ws.SpringApplicationContext;
 import nu.borjessons.app.ws.service.UserService;
-import nu.borjessons.app.ws.shared.dto.UserDto;
+import nu.borjessons.app.ws.shared.UserDto;
 import nu.borjessons.app.ws.ui.model.request.UserLoginRequestModel;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {

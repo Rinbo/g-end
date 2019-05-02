@@ -1,4 +1,4 @@
-package nu.borjessons.app.ws.shared.dto;
+package nu.borjessons.app.ws.shared;
 
 import java.io.Serializable;
 

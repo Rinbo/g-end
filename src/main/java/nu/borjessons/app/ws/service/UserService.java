@@ -2,7 +2,7 @@ package nu.borjessons.app.ws.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import nu.borjessons.app.ws.shared.dto.UserDto;
+import nu.borjessons.app.ws.shared.UserDto;
 
 public interface UserService extends UserDetailsService {
 	UserDto createUser(UserDto user);
