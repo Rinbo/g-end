@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import nu.borjessons.app.ws.io.repositories.UserRepository;
 import nu.borjessons.app.ws.service.UserService;
 import nu.borjessons.app.ws.shared.UserDto;
+import nu.borjessons.app.ws.ui.model.request.PasswordResetRequestModel;
 import nu.borjessons.app.ws.ui.model.request.UserDetailsRequestModel;
 import nu.borjessons.app.ws.ui.model.response.OperationStatusModel;
 import nu.borjessons.app.ws.ui.model.response.RequestOperationStatus;
@@ -77,6 +78,29 @@ public class UserController {
             returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
         } else {
             returnValue.setOperationResult(RequestOperationStatus.ERROR.name());
+        }
+
+        return returnValue;
+    }
+    
+	 /*
+     * http://localhost:8080/mobile-app-ws/users/password-reset-request
+     * */
+    @PostMapping(path = "/password-reset-request", 
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public OperationStatusModel requestReset(@RequestBody PasswordResetRequestModel passwordResetRequestModel) {
+    	OperationStatusModel returnValue = new OperationStatusModel();
+ 
+        boolean operationResult = userService.requestPasswordReset(passwordResetRequestModel.getEmail());
+        
+        returnValue.setOperationName(RequestOperationName.REQUEST_PASSWORD_RESET.name());
+        returnValue.setOperationResult(RequestOperationStatus.ERROR.name());
+ 
+        if(operationResult)
+        {
+            returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
         }
 
         return returnValue;
