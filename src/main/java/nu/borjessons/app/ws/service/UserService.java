@@ -9,4 +9,5 @@ public interface UserService extends UserDetailsService {
 	UserDto getUser(String email);
 	boolean verifyEmailToken(String token);
 	boolean requestPasswordReset(String email);
+	boolean resetPassword(String token, String password);
 }
