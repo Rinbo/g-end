@@ -16,7 +16,7 @@ import nu.borjessons.app.ws.shared.UserDto;
 @Service
 public class AmazonSES {
 	// This address must be verified with Amazon SES.
-	final String FROM = "sergey.kargopolov@swiftdeveloperblog.com";
+	final String FROM = "robin.b@outlook.com";
 
 	// The subject line for the email.
 	final String SUBJECT = "One last step to complete your registration with PhotoApp";
@@ -89,7 +89,7 @@ public class AmazonSES {
 	 
 	      AmazonSimpleEmailService client = 
 	          AmazonSimpleEmailServiceClientBuilder.standard()
-	            .withRegion(Regions.US_EAST_1).build();
+	            .withRegion(Regions.EU_WEST_1).build();
 	      
 	      String htmlBodyWithToken = PASSWORD_RESET_HTMLBODY.replace("$tokenValue", token);
 	             htmlBodyWithToken = htmlBodyWithToken.replace("$firstName", firstName);
