@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>nu.borjessons.app.ws</groupId>
-	<artifactId>mobile-app-ws</artifactId>
+	<artifactId>g-end</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mobile-app-ws</name>
 	<description>Scaffolded Spring Security App</description>

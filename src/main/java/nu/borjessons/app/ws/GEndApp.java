@@ -8,10 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import nu.borjessons.app.ws.security.AppProperties;
 
 @SpringBootApplication
-public class MobileAppWsApplication {
+public class GEndApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MobileAppWsApplication.class, args);
+		SpringApplication.run(GEndApp.class, args);
 	}
 
 	@Bean
