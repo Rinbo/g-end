@@ -19,13 +19,13 @@ public class AmazonSES {
 	final String FROM = "robin.b@outlook.com";
 
 	// The subject line for the email.
-	final String SUBJECT = "One last step to complete your registration with PhotoApp";
+	final String SUBJECT = "One last step to complete your registration";
 	
 	final String PASSWORD_RESET_SUBJECT = "Password reset request";
 
 	// The HTML body for the email.
 	final String HTMLBODY = "<h1>Please verify your email address</h1>"
-			+ "<p>Thank you for registering with our mobile app. To complete registration process and be able to log in,"
+			+ "<p>Thank you for registering with our app. To complete registration process and be able to log in,"
 			+ " click on the following link: "
 			+ "<a href='http://localhost:8080/verification-service/email-verification.html?token=$tokenValue'>"
 			+ "Final step to complete your registration" + "</a><br/><br/>"
@@ -33,7 +33,7 @@ public class AmazonSES {
 
 	// The email body for recipients with non-HTML email clients.
 	final String TEXTBODY = "Please verify your email address. "
-			+ "Thank you for registering with our mobile app. To complete registration process and be able to log in,"
+			+ "Thank you for registering with our app. To complete registration process and be able to log in,"
 			+ " open then the following URL in your browser window: "
 			+ " http://localhost:8080/verification-service/email-verification.html?token=$tokenValue"
 			+ " Thank you! And we are waiting for you inside!";
@@ -58,10 +58,9 @@ public class AmazonSES {
 	
 
 	public void verifyEmail(UserDto userDto) {
-
-		// You can also set your keys this way. And it will work!
-		//System.setProperty("aws.accessKeyId", "<YOUR KEY ID HERE>"); 
-		//System.setProperty("aws.secretKey", "<SECRET KEY HERE>"); 
+		
+		//System.setProperty("aws.accessKeyId", ""); 
+		//System.setProperty("aws.secretKey", ""); 
 		
 		AmazonSimpleEmailService client = AmazonSimpleEmailServiceClientBuilder.standard().withRegion(Regions.EU_WEST_1)
 				.build();
