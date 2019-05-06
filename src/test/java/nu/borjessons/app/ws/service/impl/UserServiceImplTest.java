@@ -15,6 +15,7 @@ import static org.mockito.Mockito.when;
 
 import nu.borjessons.app.ws.io.entity.UserEntity;
 import nu.borjessons.app.ws.io.repositories.UserRepository;
+import nu.borjessons.app.ws.shared.UserDto;
 
 class UserServiceImplTest {
 	
@@ -37,6 +38,10 @@ class UserServiceImplTest {
 		userEntity.setFirstName("Robin");
 		userEntity.setLastName("Börjesson");
 		when(userRepository.findByEmail(anyString())).thenReturn(userEntity);
+		
+		UserDto userDto = userService.getUser("test@test.com");
+		assertNotNull(userDto);
+		assertEquals("Robin", userDto.getFirstName());
 	}
 
 }
