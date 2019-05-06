@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -18,7 +19,7 @@ import nu.borjessons.app.ws.io.repositories.UserRepository;
 import nu.borjessons.app.ws.shared.UserDto;
 
 class UserServiceImplTest {
-	
+
 	@InjectMocks
 	UserServiceImpl userService;
 
@@ -38,10 +39,24 @@ class UserServiceImplTest {
 		userEntity.setFirstName("Robin");
 		userEntity.setLastName("Börjesson");
 		when(userRepository.findByEmail(anyString())).thenReturn(userEntity);
-		
+
 		UserDto userDto = userService.getUser("test@test.com");
 		assertNotNull(userDto);
 		assertEquals("Robin", userDto.getFirstName());
+		assertEquals("Börjesson", userDto.getLastName());
+	}
+
+	@Test
+	void testGetUser_UserNameNotFoundException() {
+		when(userRepository.findByEmail(anyString())).thenReturn(null);
+
+		assertThrows(UsernameNotFoundException.class,
+
+				() -> {
+					userService.getUser("test@test.com");
+				}
+
+		);
 	}
 
 }
