@@ -85,6 +85,7 @@ public class AmazonSES {
 		client.sendEmail(request);
 
 		System.out.println("Email sent!");
+		
 
 	}
 
