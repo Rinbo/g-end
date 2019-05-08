@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,18 +37,31 @@ class UserServiceImplTest {
 	@Mock
 	Utils utils;
 	
+	@Mock
+	AmazonSES amazonSES;
+	
+	UserEntity userEntity;
+	String userId = "hhty57ehfy";
+	String encryptedPassword = "74hghd8474jf";
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-	}
-
-	@Test
-	void testGetUser() {
-		UserEntity userEntity = new UserEntity();
+		
+		userEntity = new UserEntity();
 		userEntity.setId(1L);
 		userEntity.setUserId("1323kjlkedf");
 		userEntity.setFirstName("Robin");
 		userEntity.setLastName("Börjesson");
+		userEntity.setEncryptedPassword(encryptedPassword);
+		userEntity.setEmail("test@test.com");
+		userEntity.setEmailVerificationToken("7htnfhr758");
+		
+	}
+
+	@Test
+	void testGetUser() {
+		
 		when(userRepository.findByEmail(anyString())).thenReturn(userEntity);
 
 		UserDto userDto = userService.getUser("test@test.com");
@@ -67,6 +81,33 @@ class UserServiceImplTest {
 				}
 
 		);
+	}
+	
+	@Test
+	final void testCreateUser()
+	{
+		when(userRepository.findByEmail(anyString())).thenReturn(null);	
+		when(utils.generateUserId(anyInt())).thenReturn(userId);
+		when(bCryptPasswordEncoder.encode(anyString())).thenReturn(encryptedPassword);
+		when(userRepository.save(any(UserEntity.class))).thenReturn(userEntity);
+		//Mockito.doNothing().when(amazonSES).verifyEmail(any(UserDto.class));
+ 		
+		UserDto userDto = new UserDto();
+		
+		userDto.setFirstName("Robin");
+		userDto.setLastName("Börjesson");
+		userDto.setPassword("12345678");
+		userDto.setEmail("test@test.com");
+
+		UserDto storedUserDetails = userService.createUser(userDto);
+		assertNotNull(storedUserDetails);
+		assertEquals(userEntity.getFirstName(), storedUserDetails.getFirstName());
+		assertEquals(userEntity.getLastName(), storedUserDetails.getLastName());
+		assertNotNull(storedUserDetails.getUserId());
+		assertEquals(storedUserDetails.getAddresses().size(), userEntity.getAddresses().size());
+		verify(utils,times(storedUserDetails.getAddresses().size())).generateAddressId(30);
+		verify(bCryptPasswordEncoder, times(1)).encode("12345678");
+		verify(userRepository,times(1)).save(any(UserEntity.class));
 	}
 
 }
