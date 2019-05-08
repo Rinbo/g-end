@@ -109,5 +109,24 @@ class UserServiceImplTest {
 		verify(bCryptPasswordEncoder, times(1)).encode("12345678");
 		verify(userRepository,times(1)).save(any(UserEntity.class));
 	}
+	
+	@Test
+	final void testCreateUser_CreateUserServiceException()
+	{
+		when(userRepository.findByEmail(anyString())).thenReturn(userEntity);
+		UserDto userDto = new UserDto();		
+		userDto.setFirstName("Robin");
+		userDto.setLastName("Börjsson");
+		userDto.setPassword("12345678");
+		userDto.setEmail("test@test.com");
+ 	
+		assertThrows(RuntimeException.class,
+
+				() -> {
+					userService.createUser(userDto);
+				}
+
+		);
+	}
 
 }
