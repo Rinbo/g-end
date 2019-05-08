@@ -1,5 +1,6 @@
 package nu.borjessons.app.ws.shared;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.amazonaws.regions.Regions;
@@ -17,6 +18,11 @@ import nu.borjessons.app.ws.shared.UserDto;
 public class AmazonSES {
 	// This address must be verified with Amazon SES.
 	final String FROM = "robin.b@outlook.com";
+	
+	@Value("${aws.access.key.id}")
+	private String awsKey;
+	@Value("${aws.secret.access.key}")
+	private String awsSecret;
 
 	// The subject line for the email.
 	final String SUBJECT = "One last step to complete your registration";
@@ -59,8 +65,8 @@ public class AmazonSES {
 
 	public void verifyEmail(UserDto userDto) {
 		
-		//System.setProperty("aws.accessKeyId", ""); 
-		//System.setProperty("aws.secretKey", ""); 
+		System.setProperty("aws.accessKeyId", awsKey); 
+		System.setProperty("aws.secretKey", awsSecret); 
 		
 		AmazonSimpleEmailService client = AmazonSimpleEmailServiceClientBuilder.standard().withRegion(Regions.EU_WEST_1)
 				.build();

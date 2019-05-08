@@ -15,11 +15,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import nu.borjessons.app.ws.io.entity.UserEntity;
 import nu.borjessons.app.ws.io.repositories.PasswordResetTokenRepository;
 import nu.borjessons.app.ws.io.repositories.UserRepository;
+import nu.borjessons.app.ws.shared.AmazonSES;
 import nu.borjessons.app.ws.shared.UserDto;
 import nu.borjessons.app.ws.shared.Utils;
 
@@ -90,7 +93,7 @@ class UserServiceImplTest {
 		when(utils.generateUserId(anyInt())).thenReturn(userId);
 		when(bCryptPasswordEncoder.encode(anyString())).thenReturn(encryptedPassword);
 		when(userRepository.save(any(UserEntity.class))).thenReturn(userEntity);
-		//Mockito.doNothing().when(amazonSES).verifyEmail(any(UserDto.class));
+		Mockito.doNothing().when(amazonSES).verifyEmail(any(UserDto.class));
  		
 		UserDto userDto = new UserDto();
 		
@@ -103,9 +106,7 @@ class UserServiceImplTest {
 		assertNotNull(storedUserDetails);
 		assertEquals(userEntity.getFirstName(), storedUserDetails.getFirstName());
 		assertEquals(userEntity.getLastName(), storedUserDetails.getLastName());
-		assertNotNull(storedUserDetails.getUserId());
-		assertEquals(storedUserDetails.getAddresses().size(), userEntity.getAddresses().size());
-		verify(utils,times(storedUserDetails.getAddresses().size())).generateAddressId(30);
+		assertNotNull(storedUserDetails.getUserId());	
 		verify(bCryptPasswordEncoder, times(1)).encode("12345678");
 		verify(userRepository,times(1)).save(any(UserEntity.class));
 	}
