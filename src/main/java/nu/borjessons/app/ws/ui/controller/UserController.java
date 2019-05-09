@@ -26,7 +26,7 @@ import nu.borjessons.app.ws.ui.model.response.UserRest;
 
 @CrossOrigin
 @RestController
-@RequestMapping("users")
+@RequestMapping(path= "/users")
 public class UserController {
 	
 	@Autowired
