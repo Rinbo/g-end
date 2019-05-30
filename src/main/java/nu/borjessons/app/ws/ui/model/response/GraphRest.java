@@ -1,4 +1,4 @@
-package nu.borjessons.app.ws.ui.model.request;
+package nu.borjessons.app.ws.ui.model.response;
 
 import java.util.List;
 
@@ -6,8 +6,7 @@ import nu.borjessons.app.ws.io.entity.DatasetNames;
 import nu.borjessons.app.ws.io.entity.XAxisLabels;
 import nu.borjessons.app.ws.io.entity.YInputArrayEntity;
 
-public class GraphDetailsRequest {
-
+public class GraphRest {
 	private String publicId;
 
 	private List<YInputArrayEntity> yInputs;
