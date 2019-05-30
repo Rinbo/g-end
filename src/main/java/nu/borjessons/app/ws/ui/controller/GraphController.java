@@ -19,7 +19,7 @@ import nu.borjessons.app.ws.ui.model.response.UserRest;
 public class GraphController {
 
 	@PostMapping
-	public UserRest createUser(@RequestBody GraphDetailsRequest graphDetails) {
+	public GraphRest createUser(@RequestBody GraphDetailsRequest graphDetails) {
 				
 		UserRest returnValue = new UserRest();		
 		ModelMapper modelMapper = new ModelMapper();

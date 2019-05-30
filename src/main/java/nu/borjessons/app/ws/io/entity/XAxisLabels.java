@@ -21,8 +21,8 @@ public class XAxisLabels implements Serializable {
 	@JoinColumn(name="graphs_id")
 	private GraphEntity graphDetails;
 	
-	private String xAxis;
-	private String yAxis;
+	private String xAxisLabel;
+		
 	public long getId() {
 		return id;
 	}
@@ -36,15 +36,10 @@ public class XAxisLabels implements Serializable {
 		this.graphDetails = graphDetails;
 	}
 	public String getxAxis() {
-		return xAxis;
+		return xAxisLabel;
 	}
 	public void setxAxis(String xAxis) {
-		this.xAxis = xAxis;
+		this.xAxisLabel = xAxis;
 	}
-	public String getyAxis() {
-		return yAxis;
-	}
-	public void setyAxis(String yAxis) {
-		this.yAxis = yAxis;
-	}
+	
 }

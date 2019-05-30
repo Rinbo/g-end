@@ -22,12 +22,16 @@ public class GraphEntity implements Serializable {
 	
 	@OneToMany(mappedBy="graphDetails", cascade=CascadeType.ALL)
 	private List<YInputArrayEntity> yInputs;
-
-	private XAxisLabels xAxisLabels;
 	
-	private DatasetNames datasetNames;
+	@OneToMany(mappedBy="graphDetails", cascade=CascadeType.ALL)
+	private List<XAxisLabels> xAxisLabels;
 	
-	private AxisNames axisNames;
+	@OneToMany(mappedBy="graphDetails", cascade=CascadeType.ALL)
+	private List<DatasetNames> datasetNames;
+	
+	private String xAxisName;
+	
+	private String yAxisName;
 	
 	private String title;
 	
@@ -55,30 +59,38 @@ public class GraphEntity implements Serializable {
 		this.yInputs = yInputArrayEntities;
 	}
 
-	public XAxisLabels getxAxisLabels() {
+	public List<XAxisLabels> getxAxisLabels() {
 		return xAxisLabels;
 	}
 
-	public void setxAxisLabels(XAxisLabels xAxisLabels) {
+	public void setxAxisLabels(List<XAxisLabels> xAxisLabels) {
 		this.xAxisLabels = xAxisLabels;
 	}
 
-	public DatasetNames getDatasetNames() {
+	public String getxAxisName() {
+		return xAxisName;
+	}
+
+	public void setxAxisName(String xAxisName) {
+		this.xAxisName = xAxisName;
+	}
+
+	public String getyAxisName() {
+		return yAxisName;
+	}
+
+	public void setyAxisName(String yAxisName) {
+		this.yAxisName = yAxisName;
+	}
+
+	public List<DatasetNames> getDatasetNames() {
 		return datasetNames;
 	}
 
-	public void setDatasetNames(DatasetNames datasetNames) {
+	public void setDatasetNames(List<DatasetNames> datasetNames) {
 		this.datasetNames = datasetNames;
 	}
-
-	public AxisNames getAxisNames() {
-		return axisNames;
-	}
-
-	public void setAxisNames(AxisNames axisNames) {
-		this.axisNames = axisNames;
-	}
-
+	
 	public String getTitle() {
 		return title;
 	}
