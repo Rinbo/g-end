@@ -24,6 +24,30 @@ public class YInputArrayEntity implements Serializable {
 	@JoinColumn(name="graphs_id")
 	private GraphEntity graphDetails;
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public GraphEntity getGraphDetails() {
+		return graphDetails;
+	}
+
+	public void setGraphDetails(GraphEntity graphDetails) {
+		this.graphDetails = graphDetails;
+	}
+
+	public List<DataPointEntity> getDataPoints() {
+		return dataPoints;
+	}
+
+	public void setDataPoints(List<DataPointEntity> dataPoints) {
+		this.dataPoints = dataPoints;
+	}
+
 	@OneToMany(mappedBy="inputDetails", cascade=CascadeType.ALL)
 	private List<DataPointEntity> dataPoints;
 	}

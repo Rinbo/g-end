@@ -2,19 +2,17 @@ package nu.borjessons.app.ws.ui.model.request;
 
 import java.util.List;
 
-import nu.borjessons.app.ws.io.entity.DatasetNames;
-import nu.borjessons.app.ws.io.entity.XAxisLabels;
 import nu.borjessons.app.ws.io.entity.YInputArrayEntity;
 
 public class GraphDetailsRequest {
 
 	private String publicId;
 
-	private List<YInputArrayEntity> yInputs;
+	private List<YInputArrayRequestModel> yInputs;
 
-	private List<XAxisLabels> xAxisLabels;
+	private List<XAxisLabelsRequestModel> xAxisLabels;
 	
-	private List<DatasetNames> datasetNames;
+	private List<DatasetNamesRequestModel> datasetNames;
 
 	private String xAxisName;
 
@@ -30,27 +28,27 @@ public class GraphDetailsRequest {
 		this.publicId = publicId;
 	}
 
-	public List<YInputArrayEntity> getyInputs() {
+	public List<YInputArrayRequestModel> getyInputs() {
 		return yInputs;
 	}
 
-	public void setyInputs(List<YInputArrayEntity> yInputs) {
+	public void setyInputs(List<YInputArrayRequestModel> yInputs) {
 		this.yInputs = yInputs;
 	}
 
-	public List<XAxisLabels> getxAxisLabels() {
+	public List<XAxisLabelsRequestModel> getxAxisLabels() {
 		return xAxisLabels;
 	}
 
-	public void setxAxisLabels(List<XAxisLabels> xAxisLabels) {
+	public void setxAxisLabels(List<XAxisLabelsRequestModel> xAxisLabels) {
 		this.xAxisLabels = xAxisLabels;
 	}
 
-	public List<DatasetNames> getDatasetNames() {
+	public List<DatasetNamesRequestModel> getDatasetNames() {
 		return datasetNames;
 	}
 
-	public void setDatasetNames(List<DatasetNames> datasetNames) {
+	public void setDatasetNames(List<DatasetNamesRequestModel> datasetNames) {
 		this.datasetNames = datasetNames;
 	}
 
