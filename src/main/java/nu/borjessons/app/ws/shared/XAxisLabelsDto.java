@@ -1,10 +1,10 @@
 package nu.borjessons.app.ws.shared;
 
-import nu.borjessons.app.ws.io.entity.GraphEntity;
-
 public class XAxisLabelsDto {
 	
 	private long id;
+	private String xAxisLabel;	
+	private GraphDto graphDetails;
 		
 	public long getId() {
 		return id;
@@ -14,11 +14,11 @@ public class XAxisLabelsDto {
 		this.id = id;
 	}
 
-	public GraphEntity getGraphDetails() {
+	public GraphDto getGraphDetails() {
 		return graphDetails;
 	}
 
-	public void setGraphDetails(GraphEntity graphDetails) {
+	public void setGraphDetails(GraphDto graphDetails) {
 		this.graphDetails = graphDetails;
 	}
 
@@ -29,8 +29,5 @@ public class XAxisLabelsDto {
 	public void setxAxisLabel(String xAxisLabel) {
 		this.xAxisLabel = xAxisLabel;
 	}
-
-	private GraphEntity graphDetails;
 	
-	private String xAxisLabel;
 }

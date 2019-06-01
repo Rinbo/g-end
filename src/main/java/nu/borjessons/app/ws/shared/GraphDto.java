@@ -6,8 +6,8 @@ public class GraphDto  {
 	
 	private long id;
 	
-	private String publicId;
-		
+	private String publicString;	
+	
 	private List<YInputArrayDto> yInputs;
 	
 	private List<XAxisLabelsDto> xAxisLabels;
@@ -22,12 +22,12 @@ public class GraphDto  {
 		this.id = id;
 	}
 
-	public String getPublicId() {
-		return publicId;
+	public String getPublicString() {
+		return publicString;
 	}
 
-	public void setPublicId(String publicId) {
-		this.publicId = publicId;
+	public void setPublicString(String publicString) {
+		this.publicString = publicString;
 	}
 
 	public List<YInputArrayDto> getyInputs() {

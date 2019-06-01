@@ -1,10 +1,10 @@
 package nu.borjessons.app.ws.shared;
 
-import nu.borjessons.app.ws.io.entity.YInputArrayEntity;
-
 public class DataPointDto {
 	
 	private long id;
+	private YInputArrayDto inputDetails;	
+	private Integer dataPoint;
 	
 	public long getId() {
 		return id;
@@ -14,11 +14,11 @@ public class DataPointDto {
 		this.id = id;
 	}
 
-	public YInputArrayEntity getInputDetails() {
+	public YInputArrayDto getInputDetails() {
 		return inputDetails;
 	}
 
-	public void setInputDetails(YInputArrayEntity inputDetails) {
+	public void setInputDetails(YInputArrayDto inputDetails) {
 		this.inputDetails = inputDetails;
 	}
 
@@ -30,7 +30,5 @@ public class DataPointDto {
 		this.dataPoint = dataPoint;
 	}
 
-	private YInputArrayEntity inputDetails;
-	
-	private Integer dataPoint;
+
 }

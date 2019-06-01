@@ -1,12 +1,10 @@
 package nu.borjessons.app.ws.shared;
 
-import nu.borjessons.app.ws.io.entity.GraphEntity;
-
 public class DatasetNamesDto {
 	
 	private long id;
-	
-	private GraphEntity graphDetails;
+	private String datasetName;
+	private GraphDto graphDetails;
 	
 	public long getId() {
 		return id;
@@ -16,21 +14,20 @@ public class DatasetNamesDto {
 		this.id = id;
 	}
 
-	public GraphEntity getGraphDetails() {
+	public GraphDto getGraphDetails() {
 		return graphDetails;
 	}
 
-	public void setGraphDetails(GraphEntity graphDetails) {
+	public void setGraphDetails(GraphDto graphDetails) {
 		this.graphDetails = graphDetails;
 	}
 
-	public String getDataSetName() {
-		return dataSetName;
+	public String getDatasetName() {
+		return datasetName;
 	}
 
-	public void setDataSetName(String dataSetName) {
-		this.dataSetName = dataSetName;
+	public void setDatasetName(String datasetName) {
+		this.datasetName = datasetName;
 	}
 
-	private String dataSetName;
 }

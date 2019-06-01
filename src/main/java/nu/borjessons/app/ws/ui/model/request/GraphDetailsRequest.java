@@ -4,7 +4,7 @@ import java.util.List;
 
 public class GraphDetailsRequest {
 
-	private String publicId;
+	private String publicString;
 
 	private List<YInputArrayRequestModel> yInputs;
 
@@ -18,12 +18,12 @@ public class GraphDetailsRequest {
 
 	private String title;
 
-	public String getPublicId() {
-		return publicId;
+	public String getPublicString() {
+		return publicString;
 	}
 
-	public void setPublicId(String publicId) {
-		this.publicId = publicId;
+	public void setPublicString(String publicString) {
+		this.publicString = publicString;
 	}
 
 	public List<YInputArrayRequestModel> getyInputs() {

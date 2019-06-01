@@ -2,14 +2,14 @@ package nu.borjessons.app.ws.ui.model.request;
 
 public class DatasetNamesRequestModel {
 	
-	private String dataSetName;
+	private String datasetName;
 
-	public String getDataSetName() {
-		return dataSetName;
+	public String getDatasetName() {
+		return datasetName;
 	}
 
-	public void setDataSetName(String dataSetName) {
-		this.dataSetName = dataSetName;
+	public void setDatasetName(String datasetName) {
+		this.datasetName = datasetName;
 	}
 
 }

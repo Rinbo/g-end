@@ -21,7 +21,7 @@ public class DatasetNames implements Serializable {
 	@JoinColumn(name="graphs_id")
 	private GraphEntity graphDetails;
 	
-	private String dataSetName;
+	private String datasetName;
 
 	public long getId() {
 		return id;
@@ -39,11 +39,11 @@ public class DatasetNames implements Serializable {
 		this.graphDetails = graphDetails;
 	}
 
-	public String getDataSetName() {
-		return dataSetName;
+	public String getDatasetName() {
+		return datasetName;
 	}
 
-	public void setDataSetName(String dataSetName) {
-		this.dataSetName = dataSetName;
+	public void setDatasetName(String datasetName) {
+		this.datasetName = datasetName;
 	}
 }
