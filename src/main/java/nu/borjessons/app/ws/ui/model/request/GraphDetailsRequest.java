@@ -2,8 +2,6 @@ package nu.borjessons.app.ws.ui.model.request;
 
 import java.util.List;
 
-import nu.borjessons.app.ws.io.entity.YInputArrayEntity;
-
 public class GraphDetailsRequest {
 
 	private String publicId;

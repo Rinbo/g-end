@@ -17,6 +17,12 @@ public class DataPointEntity implements Serializable {
 	@GeneratedValue
 	private long id;
 	
+	@ManyToOne
+	@JoinColumn(name="y_inputs_id")
+	private YInputArrayEntity inputDetails;
+	
+	private Integer dataPoint;
+	
 	public long getId() {
 		return id;
 	}
@@ -33,8 +39,13 @@ public class DataPointEntity implements Serializable {
 		this.inputDetails = inputDetails;
 	}
 
-	@ManyToOne
-	@JoinColumn(name="y_inputs_id")
-	private YInputArrayEntity inputDetails;
+	public Integer getDataPoint() {
+		return dataPoint;
+	}
+
+	public void setDataPoint(Integer dataPoint) {
+		this.dataPoint = dataPoint;
+	}
+
 
 }

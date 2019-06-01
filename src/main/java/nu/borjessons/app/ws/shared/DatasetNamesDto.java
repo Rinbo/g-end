@@ -1,17 +1,13 @@
 package nu.borjessons.app.ws.shared;
 
-import java.util.List;
-
 import nu.borjessons.app.ws.io.entity.GraphEntity;
 
-public class YInputArrayDto {
-		
-	private long id;
-		
-	private GraphEntity graphDetails;	
+public class DatasetNamesDto {
 	
-	private List<DataPointDto> dataPoints;
-
+	private long id;
+	
+	private GraphEntity graphDetails;
+	
 	public long getId() {
 		return id;
 	}
@@ -28,12 +24,13 @@ public class YInputArrayDto {
 		this.graphDetails = graphDetails;
 	}
 
-	public List<DataPointDto> getDataPoints() {
-		return dataPoints;
+	public String getDataSetName() {
+		return dataSetName;
 	}
 
-	public void setDataPoints(List<DataPointDto> dataPoints) {
-		this.dataPoints = dataPoints;
+	public void setDataSetName(String dataSetName) {
+		this.dataSetName = dataSetName;
 	}
 
+	private String dataSetName;
 }

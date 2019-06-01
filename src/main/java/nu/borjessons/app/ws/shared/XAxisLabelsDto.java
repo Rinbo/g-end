@@ -1,17 +1,11 @@
 package nu.borjessons.app.ws.shared;
 
-import java.util.List;
-
 import nu.borjessons.app.ws.io.entity.GraphEntity;
 
-public class YInputArrayDto {
-		
+public class XAxisLabelsDto {
+	
 	private long id;
 		
-	private GraphEntity graphDetails;	
-	
-	private List<DataPointDto> dataPoints;
-
 	public long getId() {
 		return id;
 	}
@@ -28,12 +22,15 @@ public class YInputArrayDto {
 		this.graphDetails = graphDetails;
 	}
 
-	public List<DataPointDto> getDataPoints() {
-		return dataPoints;
+	public String getxAxisLabel() {
+		return xAxisLabel;
 	}
 
-	public void setDataPoints(List<DataPointDto> dataPoints) {
-		this.dataPoints = dataPoints;
+	public void setxAxisLabel(String xAxisLabel) {
+		this.xAxisLabel = xAxisLabel;
 	}
 
+	private GraphEntity graphDetails;
+	
+	private String xAxisLabel;
 }
