@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import nu.borjessons.app.ws.io.entity.GraphEntity;
 import nu.borjessons.app.ws.io.repositories.GraphRepository;
@@ -58,5 +60,17 @@ public class GraphServiceImpl implements GraphService {
 		GraphDto returnValue = modelMapper.map(storedGraphDetails, GraphDto.class);
 
 		return returnValue;
+	}
+
+	@Override
+	public GraphDto getByPublicString(String publicString) {
+		GraphEntity graphEntity = graphRepository.findByPublicString(publicString);
+		
+		if (graphEntity == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Could not find graph");
+		
+		ModelMapper modelMapper = new ModelMapper();
+		GraphDto returnValue = modelMapper.map(graphEntity, GraphDto.class);
+		
+		return returnValue;		
 	}
 }
