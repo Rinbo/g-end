@@ -2,18 +2,14 @@ package nu.borjessons.app.ws.ui.model.response;
 
 import java.util.List;
 
-import nu.borjessons.app.ws.io.entity.DatasetNames;
-import nu.borjessons.app.ws.io.entity.XAxisLabels;
-import nu.borjessons.app.ws.io.entity.YInputArrayEntity;
-
 public class GraphRest {
 	private String publicString;
 
-	private List<YInputArrayEntity> yInputs;
+	private List<YInputArrayRest> yInputs;
 
-	private List<XAxisLabels> xAxisLabels;
+	private List<XAxisLabelsRest> xAxisLabels;
 	
-	private List<DatasetNames> datasetNames;
+	private List<DatasetNamesRest> datasetNames;
 
 	private String xAxisName;
 
@@ -29,27 +25,27 @@ public class GraphRest {
 		this.publicString = publicString;
 	}
 
-	public List<YInputArrayEntity> getyInputs() {
+	public List<YInputArrayRest> getyInputs() {
 		return yInputs;
 	}
 
-	public void setyInputs(List<YInputArrayEntity> yInputs) {
+	public void setyInputs(List<YInputArrayRest> yInputs) {
 		this.yInputs = yInputs;
 	}
 
-	public List<XAxisLabels> getxAxisLabels() {
+	public List<XAxisLabelsRest> getxAxisLabels() {
 		return xAxisLabels;
 	}
 
-	public void setxAxisLabels(List<XAxisLabels> xAxisLabels) {
+	public void setxAxisLabels(List<XAxisLabelsRest> xAxisLabels) {
 		this.xAxisLabels = xAxisLabels;
 	}
 
-	public List<DatasetNames> getDatasetNames() {
+	public List<DatasetNamesRest> getDatasetNames() {
 		return datasetNames;
 	}
 
-	public void setDatasetNames(List<DatasetNames> datasetNames) {
+	public void setDatasetNames(List<DatasetNamesRest> datasetNames) {
 		this.datasetNames = datasetNames;
 	}
 
