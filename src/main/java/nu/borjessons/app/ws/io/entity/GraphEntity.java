@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity(name = "graphs")
 public class GraphEntity implements Serializable {
 
@@ -18,15 +20,18 @@ public class GraphEntity implements Serializable {
 	@GeneratedValue
 	private long id;
 	
-	private String publicId;
+	private String publicString;
 	
 	@OneToMany(mappedBy="graphDetails", cascade=CascadeType.ALL)
+	@JsonManagedReference
 	private List<YInputArrayEntity> yInputs;
 	
 	@OneToMany(mappedBy="graphDetails", cascade=CascadeType.ALL)
+	@JsonManagedReference
 	private List<XAxisLabels> xAxisLabels;
 	
 	@OneToMany(mappedBy="graphDetails", cascade=CascadeType.ALL)
+	@JsonManagedReference
 	private List<DatasetNames> datasetNames;
 	
 	private String xAxisName;
@@ -43,12 +48,12 @@ public class GraphEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getPublicId() {
-		return publicId;
+	public String getPublicString() {
+		return publicString;
 	}
 
-	public void setPublicId(String publicId) {
-		this.publicId = publicId;
+	public void setPublicString(String publicString) {
+		this.publicString = publicString;
 	}
 	
 	public List<YInputArrayEntity> getyInputs() {

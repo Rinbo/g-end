@@ -7,7 +7,7 @@ import nu.borjessons.app.ws.io.entity.XAxisLabels;
 import nu.borjessons.app.ws.io.entity.YInputArrayEntity;
 
 public class GraphRest {
-	private String publicId;
+	private String publicString;
 
 	private List<YInputArrayEntity> yInputs;
 
@@ -21,12 +21,12 @@ public class GraphRest {
 
 	private String title;
 
-	public String getPublicId() {
-		return publicId;
+	public String getPublicString() {
+		return publicString;
 	}
 
-	public void setPublicId(String publicId) {
-		this.publicId = publicId;
+	public void setPublicString(String publicString) {
+		this.publicString = publicString;
 	}
 
 	public List<YInputArrayEntity> getyInputs() {

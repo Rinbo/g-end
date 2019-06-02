@@ -24,11 +24,10 @@ public class GraphController {
 	@PostMapping
 	public GraphRest createUser(@RequestBody GraphDetailsRequest graphDetails) {
 				
-		GraphRest returnValue = new GraphRest();		
 		ModelMapper modelMapper = new ModelMapper();
 		GraphDto graphDto = modelMapper.map(graphDetails, GraphDto.class);
 		GraphDto createGraph = graphService.createGraph(graphDto);
-		modelMapper.map(createGraph, returnValue);
+		GraphRest returnValue = modelMapper.map(createGraph, GraphRest.class);
 		return returnValue;
 		
 	}

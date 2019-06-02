@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity(name = "x_axis_labels")
 public class XAxisLabels implements Serializable {
 
@@ -19,6 +21,7 @@ public class XAxisLabels implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="graphs_id")
+	@JsonBackReference
 	private GraphEntity graphDetails;
 	
 	private String xAxisLabel;

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity(name = "data_points")
 public class DataPointEntity implements Serializable {
 
@@ -19,6 +21,7 @@ public class DataPointEntity implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="y_inputs_id")
+	@JsonBackReference
 	private YInputArrayEntity inputDetails;
 	
 	private Integer dataPoint;
