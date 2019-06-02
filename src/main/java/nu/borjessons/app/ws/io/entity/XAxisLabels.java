@@ -38,10 +38,10 @@ public class XAxisLabels implements Serializable {
 	public void setGraphDetails(GraphEntity graphDetails) {
 		this.graphDetails = graphDetails;
 	}
-	public String getxAxis() {
+	public String getxAxisLabel() {
 		return xAxisLabel;
 	}
-	public void setxAxis(String xAxis) {
+	public void setxAxisLabel(String xAxis) {
 		this.xAxisLabel = xAxis;
 	}
 	

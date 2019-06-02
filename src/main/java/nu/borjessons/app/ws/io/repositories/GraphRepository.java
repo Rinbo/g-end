@@ -8,4 +8,6 @@ import nu.borjessons.app.ws.io.entity.GraphEntity;
 @Repository
 public interface GraphRepository extends CrudRepository<GraphEntity, Long> {
 
+	String findByPublicString(String publicString);
+
 }

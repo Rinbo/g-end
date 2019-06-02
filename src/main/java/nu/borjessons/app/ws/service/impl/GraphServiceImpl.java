@@ -23,20 +23,25 @@ public class GraphServiceImpl implements GraphService {
 
 	@Override
 	public GraphDto createGraph(GraphDto graph) {
+		
+		if (graphRepository.findByPublicString(graph.getPublicString()) != null) throw new RuntimeException("Record already exists");
+		
 		for (int i = 0; i < graph.getyInputs().size(); i++) {
 			YInputArrayDto yArray = graph.getyInputs().get(i);
 			yArray.setGraphDetails(graph);
-			graph.getyInputs().set(i, yArray);
-
-			XAxisLabelsDto xLabel = graph.getxAxisLabels().get(i);
-			xLabel.setGraphDetails(graph);
-			graph.getxAxisLabels().set(i, xLabel);
+			graph.getyInputs().set(i, yArray);		
 
 			List<DataPointDto> dataPoints = yArray.getDataPoints();
 			for (int j = 0; j < dataPoints.size(); j++) {
 				DataPointDto dataPoint = dataPoints.get(j);
-				dataPoint.setInputDetails(yArray);
+				dataPoint.setInputDetails(yArray);				
 			}
+		}
+		
+		for (int i = 0; i<graph.getxAxisLabels().size(); i++) {
+			XAxisLabelsDto xLabel = graph.getxAxisLabels().get(i);
+			xLabel.setGraphDetails(graph);
+			graph.getxAxisLabels().set(i, xLabel);
 		}
 
 		for (int i = 0; i < graph.getDatasetNames().size(); i++) {
