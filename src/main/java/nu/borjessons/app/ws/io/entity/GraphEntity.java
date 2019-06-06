@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -29,10 +30,14 @@ public class GraphEntity implements Serializable {
 	@OneToMany(mappedBy="graphDetails", cascade=CascadeType.ALL)
 	@JsonManagedReference
 	private List<XAxisLabels> xAxisLabels;
-	
+
 	@OneToMany(mappedBy="graphDetails", cascade=CascadeType.ALL)
 	@JsonManagedReference
 	private List<DatasetNames> datasetNames;
+	
+	@OneToOne(mappedBy="graphDetails", cascade=CascadeType.ALL)
+	@JsonManagedReference
+	private UserOptions userOptions;
 	
 	private String xAxisName;
 	
@@ -102,5 +107,14 @@ public class GraphEntity implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	
+	public UserOptions getUserOptions() {
+		return userOptions;
+	}
+
+	public void setUserOptions(UserOptions userOptions) {
+		this.userOptions = userOptions;
 	}
 }

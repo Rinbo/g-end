@@ -14,6 +14,7 @@ import nu.borjessons.app.ws.service.GraphService;
 import nu.borjessons.app.ws.shared.DataPointDto;
 import nu.borjessons.app.ws.shared.DatasetNamesDto;
 import nu.borjessons.app.ws.shared.GraphDto;
+import nu.borjessons.app.ws.shared.UserOptionsDto;
 import nu.borjessons.app.ws.shared.XAxisLabelsDto;
 import nu.borjessons.app.ws.shared.YInputArrayDto;
 
@@ -51,6 +52,10 @@ public class GraphServiceImpl implements GraphService {
 			datasetName.setGraphDetails(graph);
 			graph.getDatasetNames().set(i, datasetName);
 		}
+		
+		UserOptionsDto userOptions = graph.getUserOptions();
+		userOptions.setGraphDetails(graph);
+		graph.setUserOptions(userOptions);		
 
 		ModelMapper modelMapper = new ModelMapper();
 		GraphEntity graphEntity = modelMapper.map(graph, GraphEntity.class);

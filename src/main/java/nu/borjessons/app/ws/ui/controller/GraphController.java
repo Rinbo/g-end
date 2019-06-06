@@ -15,9 +15,9 @@ import nu.borjessons.app.ws.shared.GraphDto;
 import nu.borjessons.app.ws.ui.model.request.GraphDetailsRequest;
 import nu.borjessons.app.ws.ui.model.response.GraphRest;
 
-//@CrossOrigin
 @RestController
 @RequestMapping(path= "/graphs")
+@CrossOrigin(origins="*")
 public class GraphController {
 
 	@Autowired
@@ -34,8 +34,7 @@ public class GraphController {
 		return returnValue;
 	}
 	
-	@CrossOrigin
-	@PostMapping
+	@PostMapping	
 	public GraphRest createUser(@RequestBody GraphDetailsRequest graphDetails) {
 				
 		ModelMapper modelMapper = new ModelMapper();

@@ -10,6 +10,8 @@ public class GraphRest {
 	private List<XAxisLabelsRest> xAxisLabels;
 	
 	private List<DatasetNamesRest> datasetNames;
+	
+	private UserOptionsRest userOptions;
 
 	private String xAxisName;
 
@@ -71,5 +73,13 @@ public class GraphRest {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public UserOptionsRest getUserOptions() {
+		return userOptions;
+	}
+
+	public void setUserOptions(UserOptionsRest userOptions) {
+		this.userOptions = userOptions;
 	}
 }

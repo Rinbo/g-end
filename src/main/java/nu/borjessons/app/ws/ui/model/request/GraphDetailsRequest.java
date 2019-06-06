@@ -17,6 +17,8 @@ public class GraphDetailsRequest {
 	private String yAxisName;
 
 	private String title;
+	
+	private UserOptionsRequestModel userOptions;
 
 	public String getPublicString() {
 		return publicString;
@@ -72,5 +74,13 @@ public class GraphDetailsRequest {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public UserOptionsRequestModel getUserOptions() {
+		return userOptions;
+	}
+
+	public void setUserOptions(UserOptionsRequestModel userOptions) {
+		this.userOptions = userOptions;
 	}
 }

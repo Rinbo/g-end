@@ -14,6 +14,14 @@ public class GraphDto  {
 		
 	private List<DatasetNamesDto> datasetNames;
 	
+	private UserOptionsDto userOptions;
+	
+	private String xAxisName;
+	
+	private String yAxisName;
+	
+	private String title;
+	
 	public long getId() {
 		return id;
 	}
@@ -78,10 +86,12 @@ public class GraphDto  {
 		this.title = title;
 	}
 
-	private String xAxisName;
-	
-	private String yAxisName;
-	
-	private String title;
+	public UserOptionsDto getUserOptions() {
+		return userOptions;
+	}
+
+	public void setUserOptions(UserOptionsDto userOptions) {
+		this.userOptions = userOptions;
+	}
 
 }
