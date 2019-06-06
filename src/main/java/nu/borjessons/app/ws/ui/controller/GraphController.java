@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nu.borjessons.app.ws.service.GraphService;
+import nu.borjessons.app.ws.shared.AmazonSES;
 import nu.borjessons.app.ws.shared.GraphDto;
+import nu.borjessons.app.ws.ui.model.request.EmailRequestObject;
 import nu.borjessons.app.ws.ui.model.request.GraphDetailsRequest;
 import nu.borjessons.app.ws.ui.model.response.GraphRest;
 
@@ -22,6 +24,9 @@ public class GraphController {
 
 	@Autowired
 	GraphService graphService;
+	
+	@Autowired
+	AmazonSES amazonSES;
 	
 	@GetMapping(path = "/{publicString}")
 	public GraphRest getGraph(@PathVariable String publicString) {
@@ -43,5 +48,13 @@ public class GraphController {
 		GraphRest returnValue = modelMapper.map(createGraph, GraphRest.class);
 		return returnValue;	
 	}
+	
+	@PostMapping(path="/sendEmail")
+	public void sendEmail(@RequestBody EmailRequestObject emailRequest) {
+		
+		amazonSES.sendEmail(emailRequest.getEmail(), emailRequest.getText());
+		
+	}
+	
 	
 }
