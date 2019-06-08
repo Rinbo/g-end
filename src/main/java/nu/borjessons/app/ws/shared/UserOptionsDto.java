@@ -8,7 +8,9 @@ public class UserOptionsDto {
 
 	private String color;
 	
-	private GraphDto graphDetails;	
+	private GraphDto graphDetails;
+	
+	private String graphType;
 
 	public boolean isFillColor() {
 		return fillColor;
@@ -40,5 +42,13 @@ public class UserOptionsDto {
 
 	public void setGraphDetails(GraphDto graphDetails) {
 		this.graphDetails = graphDetails;
+	}
+
+	public String getGraphType() {
+		return graphType;
+	}
+
+	public void setGraphType(String graphType) {
+		this.graphType = graphType;
 	}
 }

@@ -4,6 +4,8 @@ public class UserOptionsRest {
 	private boolean fillColor;
 
 	private String color;
+	
+	private String graphType;
 
 	public boolean isFillColor() {
 		return fillColor;
@@ -19,5 +21,13 @@ public class UserOptionsRest {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public String getGraphType() {
+		return graphType;
+	}
+
+	public void setGraphType(String graphType) {
+		this.graphType = graphType;
 	}
 }

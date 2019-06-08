@@ -28,6 +28,8 @@ public class UserOptions implements Serializable {
 	private boolean fillColor;
 
 	private String color;
+	
+	private String graphType;
 
 	public long getId() {
 		return id;
@@ -59,6 +61,14 @@ public class UserOptions implements Serializable {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public String getGraphType() {
+		return graphType;
+	}
+
+	public void setGraphType(String graphType) {
+		this.graphType = graphType;
 	}
 
 }
